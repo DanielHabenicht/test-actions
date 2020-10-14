@@ -13,7 +13,6 @@ jobs:
       id: fc
       with:
         issue-number: ${{ github.event.pull_request.number }}
-        comment-author: github-actions
         body-includes: This PR is available as a preview
 
     - run: |
