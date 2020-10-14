@@ -15,15 +15,21 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         body-includes: This PR is available as a preview
 
-    - run: |
-          echo ${{ steps.fc.outputs.comment-id }}
-          echo ${{ steps.fc.outputs.comment-body }}
-
     - name: Create comment
       if: ${{ steps.fc.outputs.comment-id == 0 }}
       uses: peter-evans/create-or-update-comment@v1
       with:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
+          This PR is available as a preview [here](https://${{ env.STORAGE_NAME }}.z16.web.core.windows.net).
+        reaction-type: "rocket"
+
+    - name: Update comment
+      if: ${{ steps.fc.outputs.comment-id != 0 }}
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        body: |
+          Update!
           This PR is available as a preview [here](https://${{ env.STORAGE_NAME }}.z16.web.core.windows.net).
         reaction-type: "rocket"
