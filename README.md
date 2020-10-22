@@ -1,5 +1,3 @@
 # test-actions
 
-test repo for github actions
-sdfsdf
-sdfsdfsdf
+test repo for github actions sdfsdf sdfsdfsdf
