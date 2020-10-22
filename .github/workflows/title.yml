@@ -22,6 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: echo
+        if: always()
         env: 
           ENV: ${{toJson(steps.title-check.outputs)}} 
         run: |
