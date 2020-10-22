@@ -65,7 +65,6 @@ jobs:
         if: always() && (steps.fc.outputs.comment-id != 0) && (steps.title-check.outputs.success == 'false')
         uses: actions/github-script@v3
         with:
-          github-token: ${{ secrets.PAT }}
           script: |
             github.issues.deleteComment({
               owner: context.repo.owner,
