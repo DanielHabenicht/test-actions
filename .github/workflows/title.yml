@@ -31,7 +31,7 @@ jobs:
         
       - name: Find Comment
         # Attention title-check output is reversed: https://github.com/aslafy-z/conventional-pr-title-action/issues/63
-        if: always() && (steps.title-check.outputs.success == 'true')
+        if: always()
         uses: peter-evans/find-comment@v1
         id: fc
         with:
