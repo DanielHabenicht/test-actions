@@ -20,6 +20,13 @@ jobs:
           preset: conventional-changelog-angular@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: echo
+        env: 
+          ENV: ${{toJson(steps.title-check.outputs)}} 
+        run: |
+           echo $ENV
+        
         
       - name: Find Comment
         if: ${{ always() && steps.title-check.outputs.success == false }}
