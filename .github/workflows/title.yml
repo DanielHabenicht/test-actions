@@ -30,7 +30,7 @@ jobs:
         
         
       - name: Find Comment
-        if: ${{ always() && steps.title-check.outputs.success == false }}
+        if: ${{ always() && steps.title-check.outputs.success == true }}
         uses: peter-evans/find-comment@v1
         id: fc
         with:
@@ -39,7 +39,7 @@ jobs:
           body-includes: Please make sure that your Pull Request title and body does conform to this format
 
       - name: Create comment
-        if: ${{ always() && steps.fc.outputs.comment-id == 0 && steps.title-check.outputs.success == false}}
+        if: ${{ always() && steps.fc.outputs.comment-id == 0 && steps.title-check.outputs.success == true}}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.pull_request.number }}
